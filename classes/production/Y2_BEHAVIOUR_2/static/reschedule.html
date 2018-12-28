@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--Based on Summative Assessment's submission by 1645238 for CM6213 Commercial Applications with Java.-->
+<!--Based on content https://gitlab.cs.cf.ac.uk/c1645238/CM6213-Assessment1-starter-->
+<!--Which is provided as a part of CM6213 Commercial Applications with Java's content.-->
+<head>
+    <meta charset="UTF-8">
+    <title>Behaviour Activation | Reschedule</title>
+    <!-- REF: https://www.w3schools.com/bootstrap/bootstrap_get_started.asp -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!--REF: Provided in referenced module.-->
+    <script src="http://localhost:8080/js/jquery.loadTemplate-1.4.4.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="http://localhost:8080/js/js-url-2.5.0/url.js"></script>
+    <link rel="stylesheet" href="http://localhost:8080/style.css">
+
+    <!--Required for header to style.-->
+    <link rel="stylesheet" href="http://localhost:8080/template/template-style.css">
+
+</head>
+
+<!--Required to header to load in.-->
+<header id="header">
+
+</header>
+
+<body>
+    <!-- REF: https://www.w3schools.com/bootstrap/bootstrap_buttons.asp
+    REF: https://www.w3schools.com/bootstrap/bootstrap_forms_inputs.asp -->
+    <section id = "input-box-template" class="form-container-limiter">
+        <form class="schedule-form" action="/schedule/edit/submit" method="POST">
+            When: <br>
+            <input type="number" name="schedule_id" id ="schedule_id" class="form-control" style = "display: none !important;">
+            <input type="datetime" name="schedule_date" placeholder="yyyy/MM/dd HH:mm:ss" id ="schedule_date" class="form-control"> <br>
+            <button type="submit" name="SubmitButton" class="btn btn-primary">Reschedule</button>
+        </form>
+    </section>
+
+</body>
+<script>
+    // Does the required header load work.
+    $("#header").load("http://localhost:8080/template/header.html");
+
+    $(document).ready(function () {
+        var id = $.url(3);
+        console.log(id);
+        $('#schedule_id').val(id);
+    })
+</script>
+</html>

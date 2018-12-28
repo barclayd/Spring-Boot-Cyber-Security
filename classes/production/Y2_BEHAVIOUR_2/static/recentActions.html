@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--Based on Summative Assessment's submission by 1645238 for CM6213 Commercial Applications with Java.-->
+<!--Based on content https://gitlab.cs.cf.ac.uk/c1645238/CM6213-Assessment1-starter-->
+<!--Which is provided as a part of CM6213 Commercial Applications with Java's content.-->
+<head>
+    <meta charset="UTF-8">
+    <title>Recent Actions</title>
+    <!--REF: Provided in referenced module.-->
+    <script src="http://localhost:8080/js/jquery.loadTemplate-1.4.4.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="http://localhost:8080/js/js-url-2.5.0/url.js"></script>
+
+    <!-- REF: https://www.w3schools.com/bootstrap/bootstrap_get_started.asp -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="http://localhost:8080/style.css">
+
+    <!--Required for header to style.-->
+    <link rel="stylesheet" href="http://localhost:8080/template/template-style.css">
+</head>
+
+<!--Required to header to load in.-->
+<header id="header">
+
+</header>
+<body>
+    <div id = "action" class="actions-container">
+        You shouldn't be seeing this. Please contact developer.
+    </div>
+
+    <section id ="user-action-template" style = "display: none !important;" >
+        <!-- REF (used): https://www.w3schools.com/bootstrap/bootstrap_tables.asp-->
+        <table class ="user-action table table-striped">
+            <tbody class="activity-table-body">
+            </tbody>
+        </table>
+    </section >
+
+    <section id = "empty-row" style = "display: none !important;">
+        <table>
+            <tbody>
+            <tr>
+                <td class = "actionName" width = "20%">
+
+                </td>
+                <td class = "changeDate" width = "20%">
+
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+    <script>
+//        Does the required header load work.
+        $("#header").load("http://localhost:8080/template/headergp.html");
+
+        //    All of this script is based on CM6213 Commercial Applications with Java's content.
+        //    Based On: https://gitlab.cs.cf.ac.uk/c1645238/CM6213-Assessment1-starter
+        var id = $.url(2);
+
+        function newActionRow(singleAction, containerToBePopulated) {
+            var emptyRow = $('#empty-row tr');
+            var tempEvent = emptyRow.clone();
+
+            tempEvent.find(".actionName").text(singleAction.changeMade);
+            tempEvent.find(".changeDate").text(singleAction.changeDate);
+
+            containerToBePopulated.append(tempEvent);
+
+        }
+
+        function createActionsTable(actionsData, mainContainerIn) {
+            var mainContainer = $(mainContainerIn);
+            var theTable = $('#user-action-template .user-action');
+            var clonedTable = theTable.clone().appendTo(mainContainer);
+
+            actionsData.forEach(function (singleAction) {
+                newActionRow(singleAction, clonedTable.find("tbody"))
+
+            });
+
+        }
+
+        $(function fetchActions() {
+            $.getJSON("/api/actions/" + id, function (data) {
+                var mainContainer = $('#action');
+                mainContainer.empty();
+                createActionsTable(data, mainContainer);
+
+            });
+        })
+    </script>
+</body>
+</html>

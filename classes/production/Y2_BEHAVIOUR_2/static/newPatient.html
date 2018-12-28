@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Behaviour Activation | New Patient</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="http://localhost:8080/style.css">
+
+    <!--Required for header to style.-->
+    <link rel="stylesheet" href="http://localhost:8080/template/template-style.css">
+</head>
+<!--Required to header to load in.-->
+<header id="header">
+
+</header>
+<!-- REF: https://www.w3schools.com/bootstrap/bootstrap_buttons.asp
+     REF: https://www.w3schools.com/bootstrap/bootstrap_forms_inputs.asp -->
+<body>
+
+<section class="new_patient_form">
+    <form class="" action="/newPatient/" method="post" class="form-group">
+
+        NHS NUMBER: <br>
+        <input type="text" name="nhs_number" placeholder="NHS Number" class="form-control"> <br>
+
+        Depression Level: <br>
+        <input type="number" name="depression_level" placeholder="What level is the patient at currently?" class="form-control"> <br>
+
+        Patient Password:<br>
+        <input type="password" name="password" placeholder="Please insert a password" class="form-control"> <br>
+
+        <button type="submit" name="SubmitButton" class="btn btn-primary">Create</button>
+        <button type="reset" name="ResetButton" class="btn btn-default">Reset</button>
+    </form>
+</section>
+
+<script>
+    $(document).ready(function () {
+
+        $("#form-group").submit(function (e) {
+            var formData = {
+                'patient_id': $('input[name=patient_id]').val(),
+                'nhs_number': $('input[name=nhs_number]').val(),
+                'depression_level': $('input[name=depression_level]').val(),
+                'gp_id': $('input[name=gp]').val(),
+                'password': $('input[name=password]').val()
+            };
+            console.log("Form data = " + formData);
+            $.ajax({//send the AJAX request
+                type: "POST",
+                url: "/newPatient/",
+                data: formData,
+                dataType: "json",
+                encode: true
+            }).done(function (data) { //what to do if the request is a success.
+                console.log("success");
+                console.log("redirect to Patient List");
+                window.location.assign("/patients"); //redirect to home page.
+            }).fail(function (jqXHR, textStatus, errorThrown) { //and what to do if it fails
+                console.log("failed");
+            });
+
+            e.preventDefault(); //don't handle the event normally.
+        });
+    });
+
+</script>
+
+<script>
+    // Does the required header load work.
+    $("#header").load("http://localhost:8080/template/headergp.html");
+</script>
+
+</body>
+</html>

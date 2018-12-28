@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Charts </title>
+    <!-- REF: https://www.w3schools.com/bootstrap/bootstrap_get_started.asp -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="fav.png">
+
+    <!--<script src="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.js"></script>
+
+
+    <!--Required for header to style.-->
+    <link rel="stylesheet" href="https://localhost:8443/template/template-style.css">
+
+
+</head>
+<!--Required to header to load in.-->
+<header id="header">
+
+</header>
+
+<body>
+
+
+<h1> General Mood Chart </h1>
+<div id="target">
+    <button type="button">Colour Blind</button>
+</div>
+
+<div id="lineChartCss" style="position:absolute; top:80%; left:5%; width:500px; height:500px;">
+    <canvas id="lineChart"></canvas>
+</div>
+
+<script src="../js/barChartScript.js"></script>
+
+
+<script src="../js/lineChartScript.js"></script>
+<script>
+    // Does the required header load work.
+    $("#header").load("https://localhost:8443/template/header.html");
+</script>
+
+</body>
+</html>

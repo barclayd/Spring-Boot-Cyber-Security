@@ -1,0 +1,262 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+.form-container-limiter {
+  width: 25%;
+  margin: 5px;
+}
+
+body {
+  margin-left:10%! important;
+  margin-right:10%! important;
+  width: 80%! important;
+}
+
+/*REF: Copied from: https://www.w3schools.com/howto/howto_css_calendar.asp*/
+
+ul {list-style-type: none;}
+
+.month {
+  padding: 70px 25px;
+  width: 100%;
+  background: #1abc9c;
+  text-align: center;
+}
+
+.month ul {
+  margin: 0;
+  padding: 0;
+}
+
+.month ul li {
+  color: white;
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+.month .prev {
+  float: left;
+  padding-top: 10px;
+}
+
+.month .next {
+  float: right;
+  padding-top: 10px;
+}
+
+.weekdays {
+  margin: 0;
+  padding: 10px;
+  background-color: #ddd;
+}
+
+.weekdays li {
+  display: inline-block;
+  width: 13.1%;
+  color: #666;
+  text-align: center;
+}
+
+.days {
+  padding: 10px 0;
+  background: #eee;
+  margin: 0;
+}
+
+.days li {
+  list-style-type: none;
+  display: inline-block;
+  width: 13.6%;
+  text-align: center;
+  margin-bottom: 5px;
+  font-size:12px;
+  color: #777;
+}
+
+.days li .active {
+  padding: 5px;
+  background: #4680dd;
+  color: white !important;
+  border: 0px solid black;
+  border-radius: 2px;
+}
+/*END OF REFERENCE*/
+
+.theDay {
+  text-decoration: none;
+  display: inline-block;
+  width: 13.6%;
+  color: #666;
+  text-align: center;
+}
+
+.theDay:hover {
+  text-decoration: none;
+  display: inline-block;
+  width: 13.6%;
+  color: #666;
+  text-align: center;
+}
+
+.active .theDay {
+  color: white;
+}
+/*REF: https://www.w3schools.com/css/css_rwd_mediaqueries.asp*/
+@media only screen and (max-width: 768px) {
+    .form-container-limiter {
+        width: 100%;
+    }
+}
+
+
+#moodForm{
+    padding-bottom: 2%;
+    background: lightgray;
+    border: 2px solid #52c8ff;
+    border-radius: 4px;
+}
+
+#SliderInMoodForm{
+    padding-left: 32%;
+    padding-top: 3%;
+}
+
+#InsideMoodForm{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+
+/*#ex1Slider .form-container-limiter{*/
+    /*background: black;*/
+/*}*/
+
+/*--REF: http://seiyria.com/bootstrap-slider/-->*/
+#ex1Slider .slider-selection {
+
+  background: #3162aa;
+    width: 50%;
+}
+  .form-container-limiter {
+    width: 100%;
+  }
+  .scheduleList {
+    width: 100%;
+  }
+
+  /* REF: https://codingislove.com/css-speech-bubbles/
+   */
+.left{
+  float: left;
+}
+.right{
+  align: center;
+}
+
+.box {
+  width: 300px;
+  margin: 50px auto;
+  background: #800080;
+  padding: 20px;
+  text-align: center;
+  font-weight: 900;
+  color: #fff;
+  font-family: arial;
+  position: relative;
+}
+
+
+
+.sb3:before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 10px solid #800080;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #800080;
+  border-bottom: 10px solid transparent;
+  left: 19px;
+  bottom: -19px;
+}
+
+.box1 {
+  width: 300px;
+  margin: 50px auto;
+  border: 4px solid #800080;
+  padding: 20px;
+  text-align: center;
+  font-weight: 900;
+  color: #800080;
+  font-family: arial;
+  position: relative;
+}
+
+.sb8:before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 10px solid transparent;
+  border-right: 10px solid #800080;
+  border-top: 10px solid #800080;
+  border-bottom: 10px solid transparent;
+  right: 20px;
+  bottom: -23px;
+}
+
+.sb8:after {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 10px solid transparent;
+  border-right: 10px solid #fff;
+  border-top: 10px solid #fff;
+  border-bottom: 10px solid transparent;
+  right: 24px;
+  bottom: -13px;
+}
+
+/* REF: https://www.w3schools.com/css/tryit.asp?filename=trycss_tooltip*/
+
+.box .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: white;
+  color: black;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.box:hover .tooltiptext {
+  visibility: visible;
+}
+
+.box1 .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: white;
+  color: black;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.box1:hover .tooltiptext {
+  visibility: visible;
+}

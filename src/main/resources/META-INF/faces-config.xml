@@ -1,0 +1,5 @@
+<validator>
+    <validator-id>passwordValidation</validator-id>
+    <validator-class>
+        com.nsa.behaviour.services.passwordValidation</validator-class>
+</validator>

@@ -1,0 +1,83 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.8.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+
+
+group = 'com.nsa.behaviour.two'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+
+//create a single Jar with all dependencies
+task fatJar(type: Jar) {
+    manifest {
+        attributes 'Implementation-Title': 'Gradle Jar File Example',
+                'Implementation-Version': version,
+                'Main-Class': 'com.mkyong.DateUtils'
+    }
+    baseName = project.name + '-all'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
+
+//Get dependencies from Maven central repository
+repositories {
+    mavenCentral()
+}
+
+repositories {
+	mavenCentral()
+}
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.github.jengelman.gradle.plugins:shadow:2.0.2'
+    }
+}
+
+apply plugin: 'com.github.johnrengelman.shadow'
+apply plugin: 'java'
+
+dependencies {
+
+    compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.springframework.boot:spring-boot-starter-jdbc')
+    compile('org.springframework.boot:spring-boot-starter-data-jpa')
+    compile(group:'mysql',name:'mysql-connector-java',version:'5.1.13')
+    compile(group:'javax.faces',name:'javax.faces-api',version:'2.3')
+    compile('org.glassfish:javax.json:1.0.4')
+
+    runtime('org.springframework.boot:spring-boot-devtools')
+    compileOnly('org.projectlombok:lombok')
+
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web'
+    compile group: 'com.github.mkopylec', name: 'recaptcha-spring-boot-starter', version: '2.0.0'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa'
+    compile group: 'org.springframework', name: 'spring-context-support'
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.0'
+    runtime group: 'mysql', name: 'mysql-connector-java'
+
+    testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test'
+}
+
+test {
+		testLogging {
+				events "passed", "skipped", "failed", "standardOut", "standardError"
+		}
+}

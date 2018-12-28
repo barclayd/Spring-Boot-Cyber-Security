@@ -1,0 +1,215 @@
+<html lang="en">
+<!--Based on Summative Assessment's submission by 1645238 for CM6213 Commercial Applications with Java.-->
+<!--Based on content https://gitlab.cs.cf.ac.uk/c1645238/CM6213-Assessment1-starter-->
+<!--Which is provided as a part of CM6213 Commercial Applications with Java's content.-->
+<head>
+    <meta charset="UTF-8">
+    <title>Users List of Activities</title>
+
+    <!--REF: Provided in referenced module.-->
+    <script src="https://localhost:8443/js/jquery.loadTemplate-1.4.4.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://localhost:8443/js/js-url-2.5.0/url.js"></script>
+
+    <!-- REF: https://www.w3schools.com/bootstrap/bootstrap_get_started.asp -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="icon" type="image/png" href="fav.png">
+    <link rel="stylesheet" href="https://localhost:8443/style.css">
+
+    <!--Required for header to style.-->
+    <link rel="stylesheet" href="https://localhost:8443/template/template-style.css">
+
+</head>
+
+<header id="header">
+
+</header>
+
+<body>
+<div id = "calendar" class="calendar-container">
+    You shouldn't be seeing this. Please contact developer.
+</div>
+<div id = "event">
+    You shouldn't be seeing this. Please contact developer.
+</div>
+<!--REF: Calender is based on: https://www.w3schools.com/howto/howto_css_calendar.asp-->
+<section id = "user-calendar-template" style = "display: none !important;">
+    <section class="user-calendar">
+        <ul class="weekdays">
+            <li>Mo</li>
+            <li>Tu</li>
+            <li>We</li>
+            <li>Th</li>
+            <li>Fr</li>
+            <li>Sa</li>
+            <li>Su</li>
+        </ul>
+        <ul class="days">
+            <tbody class="days-list">
+
+            </tbody>
+        </ul>
+        </tbody>
+
+    </section>
+
+</section>
+
+<section id = "dates-template" style = "display: none !important;">
+    <tbody class="single-date-template">
+        <ul>
+            <li id = "single-day">
+                <a href="#" class="theDay">
+                    1
+                </a>
+            </li>
+        </ul>
+    </tbody>
+</section>
+
+<section id = "dates-template-active" style = "display: none !important;">
+    <tbody class="single-date-template">
+    <ul>
+        <li id = "single-day-active">
+                <span class="active">
+                    <a href="#" class="theDay">
+                        1
+                    </a>
+                </span>
+        </li>
+    </ul>
+    </tbody>
+</section>
+<!--End of calendar reference.-->
+
+<section id = "user-schedule-template" style = "display: none !important;" >
+    <!-- REF (used): https://www.w3schools.com/bootstrap/bootstrap_tables.asp-->
+    <table class ="scheduleList table table-striped">
+        <tbody class="activity-table-body">
+        </tbody>
+    </table>
+</section >
+
+<section id = "emptyRow" style = "display: none !important;">
+    <table>
+        <tbody>
+            <tr>
+                <td class = "eventName"width = "20%">
+
+                </td>
+                <td class = "eventLocation"width = "20%">
+
+                </td>
+                <td class = "eventDate" width = "30%">
+
+                </td>
+                <td class = "editEvent" width = "5%">
+                </td>
+
+                <td class = "deleteEvent" width = "5%">
+                </td>
+
+                <td class = "eventDone" width = "20%">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+<script>
+//    All of this script is based on CM6213 Commercial Applications with Java's content.
+//    Based On: https://gitlab.cs.cf.ac.uk/c1645238/CM6213-Assessment1-starter
+
+    $(document).ready(function() {
+
+        // Does the required header load work.
+        $("#header").load("https://localhost:8443/template/header.html");
+
+        var id = 1;
+        // For calendar.
+
+        function createUpcomingEventsCalendar(scheduleData, mainContainerIn) {
+            var mainContainer = $(mainContainerIn);
+            var theTable = $('#user-calendar-template .user-calendar');
+            var clonedTable = theTable.clone().appendTo(mainContainer);
+            var scheduledDates = [];
+
+            scheduleData.forEach(function (singleEvent) {
+                scheduledDates.push(singleEvent.scheduleDay);
+            });
+
+            console.log(scheduledDates);
+            for (i =1; i<32; i++) {
+                var theDay = i;
+
+                // REF: https://api.jquery.com/jQuery.inArray/
+                // Used to check existence of object within a list.
+
+                if (jQuery.inArray(i,scheduledDates) > -1) {
+                    var emptyRow = $('#dates-template-active li');
+                    var tempEvent = emptyRow.clone();
+                    tempEvent.find(".theDay").text(theDay);
+                    clonedTable.find(".days").append(tempEvent);
+
+                } else {
+                    var emptyRow = $('#dates-template li');
+                    var tempEvent = emptyRow.clone();
+                    tempEvent.find(".theDay").text(theDay);
+                    clonedTable.find(".days").append(tempEvent);
+
+                }
+
+
+            }
+
+        }
+
+        $(function fetchForCalendar() {
+
+            $.getJSON('/api/'+id+'/ScheduledActivities', function (data) {
+                var mainContainer = $('#calendar');
+                mainContainer.empty();
+                createUpcomingEventsCalendar(data, mainContainer);
+            });
+
+        });
+
+        // For List view.
+        function newScheduleEvent(singleEvent, containerToBePopulated) {
+            var emptyRow = $('#emptyRow tr');
+            var tempEvent = emptyRow.clone();
+            tempEvent.find(".eventName").text(singleEvent.name);
+            tempEvent.find(".eventLocation").text(singleEvent.location);
+            tempEvent.find(".eventDate").text(singleEvent.scheduleDate);
+            tempEvent.find(".editEvent").html("<a href='/schedule/edit/"+singleEvent.scheduleId+"'>Edit</a>");
+            tempEvent.find(".deleteEvent").html("<a href='/schedule/delete/"+singleEvent.scheduleId+"'>Remove</a>");
+            tempEvent.find(".eventDone").html("<a href='/scheduled/done/"+singleEvent.scheduleId+"'>Mark as Done</a>");
+
+            containerToBePopulated.append(tempEvent);
+
+        }
+
+        function createUpcomingEventsTable(scheduleData, mainContainerIn) {
+            var mainContainer = $(mainContainerIn);
+            var theTable = $('#user-schedule-template .scheduleList');
+            var clonedTable = theTable.clone().appendTo(mainContainer);
+            scheduleData.forEach(function (singleEvent) {
+                newScheduleEvent(singleEvent, clonedTable.find("tbody"))
+            });
+
+        }
+
+        $(function fetchScheduled() {
+
+            $.getJSON('/api/'+id+'/ScheduledActivities', function (data) {
+                var mainContainer = $('#event');
+                mainContainer.empty();
+                createUpcomingEventsTable(data, mainContainer);
+            });
+
+        });
+    })
+
+</script>
+</body>
+</html>

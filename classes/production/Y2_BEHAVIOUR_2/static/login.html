@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Behaviour Activation | Add Activity</title>
+    <!-- REF: https://www.w3schools.com/bootstrap/bootstrap_get_started.asp -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+
+    <!--Required for header to style.-->
+    <link rel="stylesheet" href="http://localhost:8080/template/template-style.css">
+</head>
+<!--Required to header to load in.-->
+<header id="header">
+
+</header>
+<!-- REF: https://www.w3schools.com/bootstrap/bootstrap_buttons.asp
+     REF: https://www.w3schools.com/bootstrap/bootstrap_forms_inputs.asp -->
+<body>
+    <p>GP Login</p>
+    <form class="login" action="/gp/login/" method="post">
+        <input type="text" name="gp_username" value="" placeholder="Username" class="form-control"><br>
+        <input type="password" name="gp_password" value="" placeholder="Password" class="form-control"><br>
+        <button type="submit" name="button" class="btn btn-primary">Login</button>
+    </form>
+    <br>
+
+    <p>Patient Login</p>
+    <form class="login" action="/patient/login/" method="post">
+        <input type="text" name="patient_username" value="" placeholder="Username" class="form-control"><br>
+        <input type="password" name="patient_password" value="" placeholder="Password" class="form-control"><br>
+        <button type="submit" name="button" class="btn btn-primary">Login</button>
+    </form>
+</body>
+
+<script>
+    // Does the required header load work.
+    $("#header").load("http://localhost:8080/template/headerlogin.html");
+</script>
+</html>

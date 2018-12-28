@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Behaviour Activation | Add Activity</title>
+    <!--Required to load Google Captcha-->
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <!-- REF: https://www.w3schools.com/bootstrap/bootstrap_get_started.asp -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="icon" type="image/png" href="fav.png">
+    <link rel="stylesheet" href="style.css">
+
+    <!--Required for header to style.-->
+    <link rel="stylesheet" href="https://localhost:8443/template/template-style.css">
+
+</head>
+<!--Required to header to load in.-->
+<header id="header">
+
+</header>
+<!-- REF: https://www.w3schools.com/bootstrap/bootstrap_buttons.asp
+     REF: https://www.w3schools.com/bootstrap/bootstrap_forms_inputs.asp
+     REF: https://stackoverflow.com/questions/46155/how-to-validate-an-email-address-in-javascript-->
+<body>
+    <p>GP Login</p>
+    <form class="login" action="/gp/login/" method="post">
+        <input type="email" id="email" name="gp_username" value="" placeholder="Username" class="form-control"><br>
+        <input type="password" name="gp_password" value="" placeholder="Password" class="form-control"><br>
+        <h2 id='result'></h2>
+        <!--<div class="g-recaptcha"-->
+             <!--data-sitekey="6LfRr1kUAAAAAKZRHD4E7vysbatxuSBlAvQFs7k2">-->
+        <!--</div>-->
+        <form action="/gp/login" method="post">
+            <div class="g-recaptcha" data-sitekey="6LfRr1kUAAAAAKZRHD4E7vysbatxuSBlAvQFs7k2"></div>
+            <input type="submit" value="Validate and Login" class="btn btn-primary"/>
+
+        </form>
+
+        <!--<button type="submit" id="validate" name="button" class="btn btn-primary">Login</button>-->
+        <!--<button-->
+                <!--class="g-recaptcha"-->
+                <!--data-sitekey="6LfRr1kUAAAAAKZRHD4E7vysbatxuSBlAvQFs7k2"-->
+                <!--data-callback="YourOnSubmitFn">-->
+            <!--Submit-->
+        <!--</button>-->
+    </form>
+    <br>
+
+    <script>
+        function validateEmail(email) {
+            var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(email);
+        }
+
+        function validate() {
+            var $result = $("#result");
+            var email = $("#email").val();
+            $result.text("");
+
+            if (!validateEmail(email)) {
+                alert('Please provide a valid email address')
+                email.focus;
+                $result.text(email + " is not a valid email.");
+                $result.text("Please enter a valid email");
+                $result.css("color", "red");
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+        $("#validate").bind("click", validate)
+    </script>
+<!--
+
+    <p>Patient Login</p>
+    <form class="login" action="/patient/login/" method="post">
+        <input type="text" name="patient_username" value="" placeholder="Username" class="form-control"><br>
+        <input type="password" name="patient_password" value="" placeholder="Password" class="form-control"><br>
+        <button type="submit" name="button" class="btn btn-primary">Login</button>
+    </form>
+    -->
+</body>
+
+
+<script>
+    // Does the required header load work.
+    $("#header").load("https://localhost:8443/template/headerlogin.html");
+</script>
+
+</html>

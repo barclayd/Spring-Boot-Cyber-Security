@@ -1,0 +1,113 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+/*#activityBox {*/
+/*text-align: center;*/
+/*border-radius: 36px;*/
+/*-moz-border-radius: 36px;*/
+/*-webkit-border-radius: 36px;*/
+/*border: 6px double #801467;*/
+/*}*/
+
+.box {
+    width: 300px;
+    margin: 50px auto;
+    background: #00bfb6;
+    padding: 20px;
+    text-align: center;
+    font-weight: 900;
+    color: #fff;
+    font-family: arial;
+    position: relative;
+}
+
+.box1 {
+    width: 300px;
+    margin: 50px auto;
+    border: 4px solid #00bfb6;
+    padding: 20px;
+    text-align: center;
+    font-weight: 900;
+    color: #00bfb6;
+    font-family: arial;
+    position: relative;
+}
+
+.sb1:before {
+    content: "";
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    border-left: 10px solid #00bfb6;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #00bfb6;
+    border-bottom: 10px solid transparent;
+    right: -19px;
+    top: 6px;
+}
+
+.sb2:before {
+    content: "";
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    border-left: 10px solid transparent;
+    border-right: 10px solid #00bfb6;
+    border-top: 10px solid #00bfb6;
+    border-bottom: 10px solid transparent;
+    left: -19px;
+    top: 6px;
+}
+
+.box.left{
+    float: left;
+}
+
+.box.right{
+    align: center;
+}
+
+.sb3:before {
+    content: "";
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    border-left: 10px solid #00bfb6;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #00bfb6;
+    border-bottom: 10px solid transparent;
+    left: 19px;
+    bottom: -19px;
+}
+
+.sb8:before {
+    content: "";
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    border-left: 10px solid transparent;
+    border-right: 10px solid #00bfb6;
+    border-top: 10px solid #00bfb6;
+    border-bottom: 10px solid transparent;
+    right: 20px;
+    bottom: -23px;
+}
+
+.sb8:after {
+    content: "";
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    border-left: 10px solid transparent;
+    border-right: 10px solid #fff;
+    border-top: 10px solid #fff;
+    border-bottom: 10px solid transparent;
+    right: 24px;
+    bottom: -13px;
+}
+
+.bubbles{
+    height: 200px;
+}

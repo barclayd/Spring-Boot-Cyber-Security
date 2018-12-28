@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Behaviour Activation | New Patient</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://localhost:8443/style.css">
+    <link rel="stylesheet" href="https://localhost:8443/validation.css">
+
+
+    <!--Required for header to style.-->
+    <link rel="stylesheet" href="https://localhost:8443/template/template-style.css">
+    <link rel="icon" type="image/png" href="fav.png">
+</head>
+<!--Required to header to load in.-->
+<header id="header">
+
+</header>
+<!-- REF: https://www.w3schools.com/bootstrap/bootstrap_buttons.asp
+     REF: https://www.w3schools.com/bootstrap/bootstrap_forms_inputs.asp
+     REF: https://www.w3schools.com/howto/howto_css_responsive_form.asp-->
+<body>
+
+<section class="new_patient_form">
+    <form class="" action="/newPatient/" method="post" class="form-group">
+
+        <div class="container">
+            <label for="nhsNumber">Nhs Number</label>
+            <input type="number" id="nhsNumber" name="nhs_number" class="form-control" required maxlength="3">
+
+            <label for="depressionLevel">Depression Level</label>
+            <input type="number" id="depressionLevel" name="depression_level" class="form-control" required maxlength="2">
+
+            <label for="psw">Password</label>
+            <input type="password" id="psw" value="FakePSW" name="password" class="form-control" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+            <label>Show Password</label>
+            <input type="checkbox" onclick="showPassword()">
+
+            <button type="submit" name="SubmitButton" class="btn btn-primary">Create</button>
+            <button type="reset" name="ResetButton" class="btn btn-default">Reset</button>
+            </form>
+        </div>
+
+        <div id="message">
+            <h3>Password must contain the following:</h3>
+            <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+            <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+            <p id="number" class="invalid">A <b>number</b></p>
+            <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+        </div>
+    </form>
+</section>
+
+<script>
+
+    function showPassword() {
+        var x = document.getElementById("psw");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+    }
+
+    var myInput = document.getElementById("psw");
+    var letter = document.getElementById("letter");
+    var capital = document.getElementById("capital");
+    var number = document.getElementById("number");
+    var length = document.getElementById("length");
+
+    // When the user clicks on the password field, show the message box
+    myInput.onfocus = function() {
+        document.getElementById("message").style.display = "block";
+    }
+
+    // When the user clicks outside of the password field, hide the message box
+    myInput.onblur = function() {
+        document.getElementById("message").style.display = "none";
+    }
+
+    // When the user starts to type something inside the password field
+    myInput.onkeyup = function() {
+        // Validate lowercase letters
+        var lowerCaseLetters = /[a-z]/g;
+        if(myInput.value.match(lowerCaseLetters)) {
+            letter.classList.remove("invalid");
+            letter.classList.add("valid");
+        } else {
+            letter.classList.remove("valid");
+            letter.classList.add("invalid");
+        }
+
+        // Validate capital letters
+        var upperCaseLetters = /[A-Z]/g;
+        if(myInput.value.match(upperCaseLetters)) {
+            capital.classList.remove("invalid");
+            capital.classList.add("valid");
+        } else {
+            capital.classList.remove("valid");
+            capital.classList.add("invalid");
+        }
+
+        // Validate numbers
+        var numbers = /[0-9]/g;
+        if(myInput.value.match(numbers)) {
+            number.classList.remove("invalid");
+            number.classList.add("valid");
+        } else {
+            number.classList.remove("valid");
+            number.classList.add("invalid");
+        }
+
+        // Validate length
+        if(myInput.value.length >= 8) {
+            length.classList.remove("invalid");
+            length.classList.add("valid");
+        } else {
+            length.classList.remove("valid");
+            length.classList.add("invalid");
+        }
+    }
+</script>
+
+<script>
+    $(document).ready(function () {
+
+        $("#form-group").submit(function (e) {
+            var formData = {
+                'patient_id': $('input[name=patient_id]').val(),
+                'nhs_number': $('input[name=nhs_number]').val(),
+                'depression_level': $('input[name=depression_level]').val(),
+                'gp_id': $('input[name=gp]').val(),
+                'password': $('input[name=password]').val()
+            };
+            console.log("Form data = " + formData);
+            $.ajax({//send the AJAX request
+                type: "POST",
+                url: "/newPatient/",
+                data: formData,
+                dataType: "json",
+                encode: true
+            }).done(function (data) { //what to do if the request is a success.
+                console.log("success");
+                console.log("redirect to Patient List");
+                window.location.assign("/patients"); //redirect to home page.
+            }).fail(function (jqXHR, textStatus, errorThrown) { //and what to do if it fails
+                console.log("failed");
+            });
+
+            e.preventDefault(); //don't handle the event normally.
+        });
+    });
+
+</script>
+
+<script>
+    // Does the required header load work.
+    $("#header").load("https://localhost:8443/template/headergp.html");
+</script>
+
+</body>
+</html>

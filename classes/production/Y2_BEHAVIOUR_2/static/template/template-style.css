@@ -1,0 +1,38 @@
+/*Only edit for header styling.*/
+
+* {
+margin: 0px;
+padding: 0px;
+}
+
+.jumbotron {
+  /*License of image can be found under img/licenses file.*/
+  background: url("img/banner.jpeg");
+  background-size: cover;
+  color: white;
+  margin: 2px;
+  border-radius: 2px;
+}
+
+.text-container-banner {
+  padding: 35px;
+}
+
+nav {
+  margin: 2px;
+}
+
+.indv-menu {
+  color: white;
+}
+
+.footer {
+  margin: 2px;
+  border-radius: 2px;
+  background-color: #101010;
+  width: 99.8%;
+}
+
+table {
+  width: 100%;
+}

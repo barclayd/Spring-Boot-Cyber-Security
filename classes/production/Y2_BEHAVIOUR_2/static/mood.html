@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mood</title>
+    <!-- REF: https://www.w3schools.com/bootstrap/bootstrap_get_started.asp -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/bootstrap-slider.min.js"></script>
+
+    <script src="js/script"></script>
+
+
+    <link rel="stylesheet" href="style.css">
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/css/bootstrap-slider.min.css">
+
+
+    <!--Required for header to style.-->
+    <link rel="stylesheet" href="http://localhost:8080/template/template-style.css">
+
+</head>
+<!--Required to header to load in.-->
+<header id="header">
+
+</header>
+
+<!-- REF: https://www.w3schools.com/bootstrap/bootstrap_buttons.asp
+     REF: https://www.w3schools.com/bootstrap/bootstrap_forms_inputs.asp -->
+
+<body>
+   <!--REF: http://seiyria.com/bootstrap-slider/-->
+
+   <!--<h3>How are you Feeling</h3>-->
+
+   <section class="form-container-limiter">
+       <h2>How are you feeling now</h2>
+       <form id="moodForm" action="/mood/create/" method="POST" class="form-group" >
+       <div id="SliderInMoodForm">
+           <img id="sadFace" src="sad.png" alt="sad"  width="55" height="55">&nbsp;&nbsp;<input name="sliderValue" id="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="50"/>&nbsp;&nbsp;<img id="smileFace" src="happy.png" alt="smile"  width="55" height="55">
+       </div>
+       <div id="InsideMoodForm">
+           <br>
+           When:
+           <br>
+           <input name="dateInputted" type="datetime"  placeholder="yyyy/MM/dd HH:mm:ss" class="form-control"> <br>
+           Comment:
+           <br>
+           <textarea rows="5" name="comment" class="form-control">
+            </textarea> <br>
+           <button type="submit" name="SubmitButton" class="btn btn-primary">Save</button>
+       </div>
+   </form>
+       </section>
+
+   <script>
+       // Does the required header load work.
+       $("#header").load("http://localhost:8080/template/header.html");
+
+       var slider = new Slider('#ex1', {
+           formatter: function(value) {
+               return 'Current value: ' + value;
+           }
+       });
+
+       $(document).ready(function() {
+           $('#ex1').change(function() {
+               var str = document.getElementById("ex1").value;
+               var sliderNum = parseInt(str);
+               var happyNum = sliderNum / 100;
+               var sadNum = (100 - sliderNum ) / 100;
+
+               $('#smileFace').attr('style', 'opacity:' + happyNum);
+               $('#sadFace').attr('style', 'opacity:' + sadNum);
+
+           });
+       });
+
+   </script> 
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Behaviour Activation | Add Activity</title>
+    <!-- REF: https://www.w3schools.com/bootstrap/bootstrap_get_started.asp -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+
+    <!--Required for header to style.-->
+    <link rel="stylesheet" href="http://localhost:8080/template/template-style.css">
+</head>
+<!--Required to header to load in.-->
+<header id="header">
+
+</header>
+
+ <!-- REF: https://www.w3schools.com/bootstrap/bootstrap_buttons.asp
+      REF: https://www.w3schools.com/bootstrap/bootstrap_forms_inputs.asp -->
+<body>
+
+<div class="bubbles">
+    <div class="box sb3 left">GO FOR A RUN
+        <span class="tooltiptext">Exercise improves your mood due to release of hormones</span></div>
+    <div class="box1 sb8 right">BAKE A CAKE
+        <span class="tooltiptext">a little creativity each day can go a long way towards happiness</span></div></div>
+</div>
+
+<div><br><br><br></div>
+
+  <section class="form-container-limiter">
+    <form class="" action="/activity/create/" method="post" class="form-group">
+        Activity Name:<br>
+        <input type="text" name="name" placeholder="Activity Name" class="form-control"> <br>
+
+        Activity Description: <br>
+        <textarea rows="5" name="dsc" class="form-control">
+        </textarea> <br>
+
+        Activity Location: <br>
+        <input type="text" name="location" placeholder="Location" class="form-control"> <br>
+
+        When: <br>
+        <input type="datetime" name="schedule_date" placeholder="yyyy/MM/dd HH:mm:ss" class="form-control"> <br>
+
+        <button type="submit" name="SubmitButton" class="btn btn-primary">Create</button>
+        <button type="reset" name="ResetButton" class="btn btn-default">Reset</button>
+    </form>
+  </section>
+    <script>
+        // Does the required header load work.
+        $("#header").load("http://localhost:8080/template/header.html");
+    </script>
+</body>
+</html>
