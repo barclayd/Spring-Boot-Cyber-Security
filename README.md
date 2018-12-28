@@ -70,6 +70,6 @@ Install Hydra using relevant commands supplied in report or Youtube tutorial
 
 ### Tutorials to Demonstrate Cyber Security Vulnerability and Fixes
 
-Brute Force Attacks with Hydra - playlist (5 videos)])https://youtu.be/ToplCJiULNY)
+[Brute Force Attacks with Hydra - playlist (5 videos)] (https://www.youtube.com/playlist?list=PLJTaTSlR4DswsHAqim4B3I5bpOhAWApHo)
 
 
