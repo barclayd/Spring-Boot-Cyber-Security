@@ -1,3 +1,5 @@
+# Spring Boot Cyber Security
+
 How to set-up the project:
 
 ```
@@ -49,13 +51,13 @@ GP Login:
 Email: steve@gp.net
 Password: ronaldo
 
-### How to set-up VM:
+### How to set-up VM
 
 Create Ubuntu 32bit VM in image of SecVM-April
 Download a list of passwords and store in cd/Documents from
 Install Hydra using relevant commands supplied in report or Youtube tutorial
 
-### Security enhancements implemented
+### Security enhancements implemented
 
 * Exception Handling/Information Leakage
 * Logging
