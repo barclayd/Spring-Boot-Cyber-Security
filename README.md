@@ -21,8 +21,29 @@ Brute Force attack can be shown by running the web app on a host machine and set
 
 [Brute Force Attacks with Hydra - YouTube](https://www.youtube.com/playlist?list=PLJTaTSlR4DswsHAqim4B3I5bpOhAWApHo)
 
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=PLJTaTSlR4DswsHAqim4B3I5bpOhAWApHo
+#####  Part 1
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=ToplCJiULNY
 " target="_blank"><img src="http://img.youtube.com/vi/ToplCJiULNY/0.jpg" 
+alt="IMAGE ALT TEXT HERE" width="560" height="315" border="10" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen /></a>
+
+#####  Part 2
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=7mN-YgYQJgY
+" target="_blank"><img src="http://img.youtube.com/vi/7mN-YgYQJgY/0.jpg" 
+alt="IMAGE ALT TEXT HERE" width="560" height="315" border="10" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen /></a>
+
+#####  Part 3
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=MZCFyxjwN4Y
+" target="_blank"><img src="http://img.youtube.com/vi/MZCFyxjwN4Y/0.jpg" 
+alt="IMAGE ALT TEXT HERE" width="560" height="315" border="10" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen /></a>
+
+#####  Part 4
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=HoQn1SUFaY0
+" target="_blank"><img src="http://img.youtube.com/vi/HoQn1SUFaY0/0.jpg" 
+alt="IMAGE ALT TEXT HERE" width="560" height="315" border="10" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen /></a>
+
+#####  Part 5
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=IZC4jCHi8fM
+" target="_blank"><img src="http://img.youtube.com/vi/IZC4jCHi8fM/0.jpg" 
 alt="IMAGE ALT TEXT HERE" width="560" height="315" border="10" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen /></a>
 
 ### Demo
